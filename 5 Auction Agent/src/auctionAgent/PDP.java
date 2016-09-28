@@ -49,7 +49,7 @@ public class PDP {
 		long startTime = System.currentTimeMillis();
 		CentralizedPlan plan = SelectInitialSolution();
 		bestPlan = plan;
-		int iterationNum = 10000;
+		int iterationNum = 30000;
 		
 		for(int i=0;i<iterationNum;i++){
 			

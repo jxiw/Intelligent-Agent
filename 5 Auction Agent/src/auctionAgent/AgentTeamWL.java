@@ -1,6 +1,7 @@
 package auctionAgent;
 
 //the list of imports
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -46,10 +47,19 @@ public class AgentTeamWL implements AuctionBehavior {
 	private List<City> allCities;
 	private List<City> myVehicleCities;
 	
-	private double ratioOpp=0.75;
+	
 	private double initialBidRatio=0.5;
 	private double initialNum=4;
+	
+	private double oppRatio=0.85;
 	private double myMarginBidRatio=0.8;
+	
+	final static double oppRatioUpper= 0.9;
+	final static double oppRatioLower= 0.8;
+	
+	final static double myRatioUpper= 0.85;
+	final static double myRatioLower= 0.75;
+	
 	
 	private double bidOppMin = Double.MAX_VALUE;
 	private int round = 0;
@@ -70,7 +80,7 @@ public class AgentTeamWL implements AuctionBehavior {
 		
 		LogistSettings ls = null;
         try {
-            ls = Parsers.parseSettings("config\\settings_auction.xml");
+            ls = Parsers.parseSettings("config"+File.separator+"settings_auction.xml");
         }
         catch (Exception exc) {
             System.out.println("There was a problem loading the configuration file.");
@@ -124,15 +134,15 @@ public class AgentTeamWL implements AuctionBehavior {
 			myCost = myNewCost;
 			myPlan.updatePlan();
 			
-			//myMarginBidRatio = Math.min(0.85, myMarginBidRatio + 0.01);
-			//ratioOpp = Math.min(0.85 , ratioOpp + 0.01);
+			myMarginBidRatio = Math.min(myRatioLower, myMarginBidRatio + 0.01);
+			oppRatio = Math.min(oppRatioLower, oppRatio + 0.01);
 		
 		}else{
 			oppCost = oppNewCost;
 			oppPlan.updatePlan();
 			
-			//myMarginBidRatio = Math.max(0.85, myMarginBidRatio - 0.01);
-			//ratioOpp = Math.max(0.75 , ratioOpp - 0.01);
+			myMarginBidRatio = Math.max(myRatioUpper, myMarginBidRatio - 0.01);
+			oppRatio = Math.max(oppRatioUpper , oppRatio - 0.01);
 		}
 		
 		if (round == 1) {
@@ -172,7 +182,7 @@ public class AgentTeamWL implements AuctionBehavior {
 		
 		System.out.println("predict cost:"+oppMarginalCost);
 		
-		double mybid = oppMarginalCost*ratioOpp;
+		double mybid = oppMarginalCost*oppRatio;
 		
 		if(mybid < myMarginBidRatio*myMarginalCost){
 			mybid = myMarginBidRatio*myMarginalCost;
