@@ -1,4 +1,4 @@
-package auctionAgent;
+package AuctionAgent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.Map;
 
 import logist.task.Task;
 import logist.task.TaskSet;
-import auctionAgent.Action.Type;
+import AuctionAgent.Action.Type;
 
 public class CentralizedPlan implements Cloneable{
 	

@@ -1,4 +1,4 @@
-package test;
+package TestAgent;
 
 import logist.topology.Topology.City;
 

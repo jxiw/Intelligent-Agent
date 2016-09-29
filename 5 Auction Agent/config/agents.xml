@@ -6,12 +6,12 @@
 	<!-- #### AUCTION AGENTS ### -->
 	<agent name="auction-our">
 		<set class-path="bin/"/>
-		<set class-name="auctionAgent.AgentTeamWL"/>
+		<set class-name="AuctionAgent.AgentTeamWL"/>
 	</agent>
 	
 	<agent name="auction-test">
 		<set class-path="bin/"/>
-		<set class-name="g16.AuctionHuey"/>
+		<set class-name="TestAgent.AuctionRiskSeeking"/>
 	</agent>
 	
 </agents>

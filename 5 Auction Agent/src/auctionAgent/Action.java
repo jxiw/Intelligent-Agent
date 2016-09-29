@@ -1,4 +1,4 @@
-package auctionAgent;
+package AuctionAgent;
 
 import logist.task.Task;
 

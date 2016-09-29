@@ -1,4 +1,4 @@
-package auctionAgent;
+package AuctionAgent;
 
 import java.util.LinkedList;
 import java.util.List;

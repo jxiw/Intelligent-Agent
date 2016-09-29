@@ -1,4 +1,4 @@
-package auctionAgent;
+package AuctionAgent;
 
 //the list of imports
 import java.io.File;
@@ -19,7 +19,7 @@ import logist.task.TaskDistribution;
 import logist.task.TaskSet;
 import logist.topology.Topology;
 import logist.topology.Topology.City;
-import auctionAgent.Action.Type;
+import AuctionAgent.Action.Type;
 
 /**
  * A very simple auction agent that assigns all tasks to its first vehicle and
