@@ -115,46 +115,46 @@ public class CentralizedTemplate implements CentralizedBehavior {
 		return plan;
 	}
 
-	private List<Plan> makePlan(CentralizedPlan plan){
+	// private List<Plan> makePlan(CentralizedPlan plan){
     	
-    	ArrayList<Plan> planList = new ArrayList<Plan>();
-    	HashMap<Vehicle, LinkedList<State>> vehicleToState = plan.getNextState();
-		for(Map.Entry< Vehicle, LinkedList<State> > entry : vehicleToState.entrySet()){
-			Vehicle vehicle = entry.getKey();
-			System.out.println("Vehicle "+vehicle);
-			Plan tmpPlan = new Plan(vehicle.homeCity());
-			LinkedList<State> nextState = entry.getValue();
+ //    	ArrayList<Plan> planList = new ArrayList<Plan>();
+ //    	HashMap<Vehicle, LinkedList<State>> vehicleToState = plan.getNextState();
+	// 	for(Map.Entry< Vehicle, LinkedList<State> > entry : vehicleToState.entrySet()){
+	// 		Vehicle vehicle = entry.getKey();
+	// 		System.out.println("Vehicle "+vehicle);
+	// 		Plan tmpPlan = new Plan(vehicle.homeCity());
+	// 		LinkedList<State> nextState = entry.getValue();
 			
-			if(nextState != null && nextState.size() > 0){
+	// 		if(nextState != null && nextState.size() > 0){
 				
-				City currentCity = vehicle.homeCity();
-				for(State state:nextState){
-					if(state.isPickup()){
-						City nextCity = state.getCurrentTask().pickupCity;
-						System.out.println(currentCity + " "+ nextCity);
-						for (City city : currentCity.pathTo(nextCity)) {
-							tmpPlan.appendMove(city);
-			            }
-						currentCity = nextCity;
-						tmpPlan.appendPickup(state.getCurrentTask());
+	// 			City currentCity = vehicle.homeCity();
+	// 			for(State state:nextState){
+	// 				if(state.isPickup()){
+	// 					City nextCity = state.getCurrentTask().pickupCity;
+	// 					System.out.println(currentCity + " "+ nextCity);
+	// 					for (City city : currentCity.pathTo(nextCity)) {
+	// 						tmpPlan.appendMove(city);
+	// 		            }
+	// 					currentCity = nextCity;
+	// 					tmpPlan.appendPickup(state.getCurrentTask());
 						
-					}else{
+	// 				}else{
 						
-						City nextCity = state.getCurrentTask().deliveryCity;
-						System.out.println(currentCity + " "+ nextCity);
-						for (City city : currentCity.pathTo(nextCity)) {
-							tmpPlan.appendMove(city);
-			            }
-						currentCity = nextCity;
-						tmpPlan.appendDelivery(state.getCurrentTask());
-					}
-				}
-				planList.add(tmpPlan);
-			}
+	// 					City nextCity = state.getCurrentTask().deliveryCity;
+	// 					System.out.println(currentCity + " "+ nextCity);
+	// 					for (City city : currentCity.pathTo(nextCity)) {
+	// 						tmpPlan.appendMove(city);
+	// 		            }
+	// 					currentCity = nextCity;
+	// 					tmpPlan.appendDelivery(state.getCurrentTask());
+	// 				}
+	// 			}
+	// 			planList.add(tmpPlan);
+	// 		}
 			
-		}
-		return planList;
-    }
+	// 	}
+	// 	return planList;
+ //    }
     
     private Plan naivePlan(Vehicle vehicle, TaskSet tasks) {
         City current = vehicle.getCurrentCity();
