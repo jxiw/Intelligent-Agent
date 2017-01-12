@@ -3,8 +3,8 @@ package template;
 import logist.task.Task;
 import logist.topology.Topology.City;
 
-public class State{
-	
+public class State {
+
 	private State parentSate;
 	private Task task;
 	private City location;
@@ -12,24 +12,25 @@ public class State{
 	private String taskSign;
 	private int accumulateWeight;
 	private boolean isPickup;
-	
-	//private int taskSign;
-	//private List<State> nextStates;
-	
-//	public State(City location, double cost, int taskSign, List<State> nextStates) {
-//		super();
-//		this.location = location;
-//		this.cost = cost;
-//		this.taskSign = taskSign;
-//		this.nextStates = nextStates;
-//	}
-	
+
+	// private int taskSign;
+	// private List<State> nextStates;
+
+	// public State(City location, double cost, int taskSign, List<State>
+	// nextStates) {
+	// super();
+	// this.location = location;
+	// this.cost = cost;
+	// this.taskSign = taskSign;
+	// this.nextStates = nextStates;
+	// }
+
 	public City getLocation() {
 		return location;
 	}
 
-	public State(State parentSate, Task task, City location, double cost,
-			String taskSign,int accumulateWeight,boolean isPickup) {
+	public State(State parentSate, Task task, City location, double cost, String taskSign, int accumulateWeight,
+			boolean isPickup) {
 		super();
 		this.parentSate = parentSate;
 		this.task = task;
@@ -94,7 +95,7 @@ public class State{
 
 	@Override
 	public String toString() {
-		return taskSign+" "+cost+"";
+		return taskSign + " " + cost + "";
 	}
 
 	@Override
@@ -106,10 +107,8 @@ public class State{
 		temp = Double.doubleToLongBits(cost);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + (isPickup ? 1231 : 1237);
-		result = prime * result
-				+ ((location == null) ? 0 : location.hashCode());
-		result = prime * result
-				+ ((taskSign == null) ? 0 : taskSign.hashCode());
+		result = prime * result + ((location == null) ? 0 : location.hashCode());
+		result = prime * result + ((taskSign == null) ? 0 : taskSign.hashCode());
 		return result;
 	}
 
@@ -124,8 +123,7 @@ public class State{
 		State other = (State) obj;
 		if (accumulateWeight != other.accumulateWeight)
 			return false;
-		if (Double.doubleToLongBits(cost) != Double
-				.doubleToLongBits(other.cost))
+		if (Double.doubleToLongBits(cost) != Double.doubleToLongBits(other.cost))
 			return false;
 		if (isPickup != other.isPickup)
 			return false;

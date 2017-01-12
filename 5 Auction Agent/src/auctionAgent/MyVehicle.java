@@ -4,20 +4,20 @@ import logist.simulation.Vehicle;
 import logist.topology.Topology.City;
 
 public class MyVehicle {
-	
+
 	private Vehicle vehicle;
 	private int capacity;
 	private City initCity;
 	private double costPerKm;
-		
-	public MyVehicle(Vehicle vehicle,City initCity, int capacity, double costPerKm){
+
+	public MyVehicle(Vehicle vehicle, City initCity, int capacity, double costPerKm) {
 		this.vehicle = vehicle;
 		this.initCity = initCity;
 		this.capacity = capacity;
 		this.costPerKm = costPerKm;
 	}
-	
-	public MyVehicle(Vehicle vehicle){
+
+	public MyVehicle(Vehicle vehicle) {
 		this.vehicle = vehicle;
 		this.initCity = vehicle.homeCity();
 		this.capacity = vehicle.capacity();
@@ -51,5 +51,5 @@ public class MyVehicle {
 	public void setCostPerKm(double costPerKm) {
 		this.costPerKm = costPerKm;
 	}
-	
+
 }

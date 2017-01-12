@@ -23,8 +23,7 @@ public class ReactiveTemplateRand implements ReactiveBehavior {
 
 		// Reads the discount factor from the agents.xml file.
 		// If the property is not present it defaults to 0.95
-		Double discount = agent.readProperty("discount-factor", Double.class,
-				0.95);
+		Double discount = agent.readProperty("discount-factor", Double.class, 0.95);
 
 		this.random = new Random();
 		this.pPickup = discount;
@@ -38,10 +37,12 @@ public class ReactiveTemplateRand implements ReactiveBehavior {
 			City currentCity = vehicle.getCurrentCity();
 			City destCity = currentCity.randomNeighbor(random);
 			action = new Move(destCity);
-			System.out.println(vehicle.name() + " has no available task. It just moves from " + vehicle.getCurrentCity() + " to " + destCity + ".");
+			System.out.println(vehicle.name() + " has no available task. It just moves from " + vehicle.getCurrentCity()
+					+ " to " + destCity + ".");
 		} else {
 			action = new Pickup(availableTask);
-			System.out.println(vehicle.name() + " picks up a task from "+ availableTask.pickupCity + " to " + availableTask.deliveryCity + ".");
+			System.out.println(vehicle.name() + " picks up a task from " + availableTask.pickupCity + " to "
+					+ availableTask.deliveryCity + ".");
 		}
 		return action;
 	}

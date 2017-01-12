@@ -12,34 +12,31 @@ import logist.task.TaskSet;
 import logist.topology.Topology;
 
 public class AuctionBestResponse implements AuctionBehavior {
-	
+
 	private Agent agent;
-	
+
 	private MyPlan myplan;
 	private MyPlan opponentplan;
-	
+
 	private final long MIN_BID = 10;
 	private final long DELTA_BID = 10;
-	
 
 	@Override
-	public void setup(Topology topology, TaskDistribution distribution,
-			Agent agent) {
+	public void setup(Topology topology, TaskDistribution distribution, Agent agent) {
 		this.agent = agent;
 		myplan = new MyPlan(agent.vehicles());
-		opponentplan = new MyPlan(agent.vehicles()); 
+		opponentplan = new MyPlan(agent.vehicles());
 	}
 
 	@Override
 	public void auctionResult(Task previous, int winner, Long[] bids) {
 		if (winner == agent.id()) {
 			myplan.addTask(previous);
-		}
-		else{
+		} else {
 			opponentplan.addTask(previous);
 		}
 	}
-	
+
 	@Override
 	public Long askPrice(Task task) {
 		long cost = (long) myplan.margCostEstim(task);

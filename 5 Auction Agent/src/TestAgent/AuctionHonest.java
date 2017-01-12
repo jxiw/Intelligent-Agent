@@ -12,15 +12,14 @@ import logist.task.TaskSet;
 import logist.topology.Topology;
 
 public class AuctionHonest implements AuctionBehavior {
-	
+
 	private Agent agent;
 	private MyPlan myplan;
-	
+
 	private final long DELTA_BID = 10;
 
 	@Override
-	public void setup(Topology topology, TaskDistribution distribution,
-			Agent agent) {
+	public void setup(Topology topology, TaskDistribution distribution, Agent agent) {
 
 		this.agent = agent;
 		myplan = new MyPlan(agent.vehicles());
@@ -32,7 +31,7 @@ public class AuctionHonest implements AuctionBehavior {
 			myplan.addTask(previous);
 		}
 	}
-	
+
 	@Override
 	public Long askPrice(Task task) {
 		long cost = (long) myplan.margCostEstim(task);

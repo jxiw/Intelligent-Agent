@@ -32,12 +32,11 @@ public class AuctionNaive implements AuctionBehavior {
 	private Random random;
 	private Vehicle vehicle;
 	private City currentCity;
-	
+
 	private MyPlan myplan;
 
 	@Override
-	public void setup(Topology topology, TaskDistribution distribution,
-			Agent agent) {
+	public void setup(Topology topology, TaskDistribution distribution, Agent agent) {
 
 		this.topology = topology;
 		this.distribution = distribution;
@@ -47,8 +46,9 @@ public class AuctionNaive implements AuctionBehavior {
 
 		long seed = -9019554669489983951L * currentCity.hashCode() * agent.id();
 		this.random = new Random(seed);
-		
-		//int timeout = (int) logist.LogistPlatform.getSettings().get(logist.LogistSettings.TimeoutKey.PLAN);
+
+		// int timeout = (int)
+		// logist.LogistPlatform.getSettings().get(logist.LogistSettings.TimeoutKey.PLAN);
 	}
 
 	@Override
@@ -57,17 +57,15 @@ public class AuctionNaive implements AuctionBehavior {
 			currentCity = previous.deliveryCity;
 		}
 	}
-	
+
 	@Override
 	public Long askPrice(Task task) {
 		if (vehicle.capacity() < task.weight)
 			return null;
 
 		long distanceTask = task.pickupCity.distanceUnitsTo(task.deliveryCity);
-		long distanceSum = distanceTask
-				+ currentCity.distanceUnitsTo(task.pickupCity);
-		double marginalCost = Measures.unitsToKM(distanceSum
-				* vehicle.costPerKm());
+		long distanceSum = distanceTask + currentCity.distanceUnitsTo(task.pickupCity);
+		double marginalCost = Measures.unitsToKM(distanceSum * vehicle.costPerKm());
 
 		double ratio = 1.0 + (random.nextDouble() * 0.05 * task.id);
 		double bid = ratio * marginalCost;
