@@ -1,16 +1,16 @@
 # Intelligent-Agent
 EPFL IA Project
 
-##Reactive Agent
+## Reactive Agent
 We are required to solve Pickup and Delivery Problem using reinforcement learning (Markov Decision Processes) to learn an optimal strategy
 
-##Deliberative Agent
+## Deliberative Agent
 Implement the state-based breadth first search and $A^{*}$ heuristic search algorithms.
 
-##Centralized Agent
+## Centralized Agent
 Implement the Stochastic Local Search algorithm for the PDP.
 
-##Auctioning Agent
+## Auctioning Agent
 The competition rules are as fellows,
 
 1. The auction house publishes the details of the task, i.e. the pickup city, the delivery city, and the weight of the task are revealed to the agents.2. Every interested agents may then submit bids for the task. The bids are integer numbers, representing the payment that the agent requests for the delivery of the task. 
